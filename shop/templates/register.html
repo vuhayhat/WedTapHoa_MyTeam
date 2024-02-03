@@ -1,9 +1,39 @@
-<p class="f">Made with love by <a class="gradient" target="_blank"  href="https://twitter.com/JeremBoo">@jeremboo</a></p>
+{% extends 'base.html' %}
 
-<div class="Project">
-  <!-- https://brisseaux.tumblr.com/post/91018371936 -->
-  <img src="https://45.media.tumblr.com/263e52c5f30e213c099a62a245242289/tumblr_n8bsno0htg1qmzbpoo1_1280.gif" alt="" class="imgMasked" />
-  <div class="Project-hail"></div>
-  <div class="Project-hail2"></div>
-  <p class="Project-name">Project name </p>
-</div>
+{% block title %}Đăng ký tài khoản - {{ block.super }}{% endblock %}
+
+{% block content %}
+    <!-- Thêm nội dung của trang đăng ký tài khoản ở đây -->
+    <h2>Đăng ký tài khoản</h2>
+    <div id="wrapper">
+        <form action="{% url 'register' %}" method="post" id="form-register">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Tên đăng nhập:</label>
+                <input type="text" name="username" class="form-input" placeholder="Tên đăng nhập">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" name="email" class="form-input" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label for="password1">Mật khẩu:</label>
+                <input type="password" name="password1" class="form-input" placeholder="Mật khẩu">
+            </div>
+            <div class="form-group">
+                <label for="password2">Nhập lại mật khẩu:</label>
+                <input type="password" name="password2" class="form-input" placeholder="Nhập lại mật khẩu">
+            </div>
+            <input type="submit" value="Đăng ký" class="form-submit">
+        </form>
+        <a href="#" class="login-link">Đăng nhập</a>
+        <button onclick="closeRegister()">Thoát</button>
+    </div>
+{% endblock %}
+
+<script>
+    function closeRegister() {
+        // Ẩn nội dung đăng ký tài khoản khi nhấn thoát
+        document.getElementById('login-content').style.display = 'none';
+    }
+</script>
